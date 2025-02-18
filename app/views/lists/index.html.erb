@@ -8,6 +8,7 @@
   <% @lists.each do |list| %>
     <div class="card">
       <%= link_to list.name, "lists/#{list.id}" %>
+      <%= cl_image_tag(list.photo.key), height: 300, width: 400, crop: :fill %>
     </div>
   <% end %>
 
