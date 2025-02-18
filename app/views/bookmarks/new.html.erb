@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Add a new bookmark</h1>
+
+  <%= render "bookmark_form", bookmark: @bookmark  %>
+
+  <%= link_to 'Return to your list', list_path(@list), class: 'btn btn-primary' %>
+</div>

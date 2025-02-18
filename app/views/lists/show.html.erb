@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center">
+  <h1><%= @list.name %></h1>
+</div>
+
+<div class="container">
+  <% @bookmarks = Bookmark.where(list_id: @list) %>
+  <div class="cards d-flex mb-3">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="card mx-3" style="width: 18rem;">
+        <%= image_tag(bookmark.movie.poster_url, class: "card-img-top", size: '400') %>
+        <%# <img class="card-img-top" src="" alt="film poster"> %>
+        <div class="card-body">
+          <h5><%= bookmark.movie.title %></h5>
+          <p><%= bookmark.comment %></p>
+        </div>
+        <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: "btn btn-success" %>
+  <%= link_to 'Delete this list', list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-warning" %>
+  <%= link_to 'Return to lists', '/', class: "btn btn-primary" %>
+</div>
