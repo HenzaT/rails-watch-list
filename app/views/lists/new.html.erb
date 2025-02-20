@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container d-flex justify-content-between" id="new-lists-top">
   <h1>Create a new list</h1>
-
-  <%= render "list_form", list: @list %>
   <%= link_to "Return to all lists", '/', class: "btn btn-primary" %>
+</div>
+
+<div class="container">
+  <%= render "list_form", list: @list %>
 </div>

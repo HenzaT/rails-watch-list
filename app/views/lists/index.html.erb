@@ -1,10 +1,23 @@
-<div class="container d-flex justify-content-center" id="home_image">
-  <div class="container-text">
-    <h1>Your Lists</h1>
+<div class="container d-flex justify-content-between" id="lists-top">
+  <h1>My Lists</h1>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Create a movie list
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= render "list_form", list: @list %>
+        </div>
+      </div>
+    </div>
   </div>
+  <%# <%= link_to 'Create a movie list', 'lists/new', class: "btn btn-success", local: false %>
 </div>
 
-<div class="container">
+<div class="container" id="cards">
   <% @lists.each do |list| %>
     <div class="card">
       <%= link_to list.name, "lists/#{list.id}" %>
@@ -13,6 +26,4 @@
       <% end %>
     </div>
   <% end %>
-
-  <%= link_to 'Create a movie list', 'lists/new', class: "btn btn-primary" %>
 </div>
